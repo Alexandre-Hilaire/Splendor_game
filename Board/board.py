@@ -3,7 +3,7 @@ import dataclasses
 
 @dataclasses.dataclass
 class Board:
-    numberOfNobles: int
+    number_of_nobles: int
     gold: int
     red: int
     green: int
