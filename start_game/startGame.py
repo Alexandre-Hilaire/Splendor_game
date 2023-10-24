@@ -6,19 +6,9 @@ class StartGameCommand:
         self.game_repository = game_repository
 
     def execute(self, number_of_players):
-        if number_of_players == 2:
-            number_of_nobles = 3
-            red = 4
-        elif number_of_players == 3:
-            number_of_nobles = 4
-            red = 5
-        elif number_of_players == 4:
-            number_of_nobles = 5
-            red = 7
-        else:
-            number_of_nobles = 0
-            red = 0
+        coin_amount_by_player_numbers = {2: 4, 3: 5, 4: 7}
+        number_of_nobles = number_of_players + 1
+        gold_coin = 5
         self.game_repository.save(
-            Board(numberOfNobles=number_of_nobles, yellow=5, red=red, card_level_3=4, card_level_2=4, card_level_1=4))
-
-
+            Board(numberOfNobles=number_of_nobles, gold=gold_coin, red=coin_amount_by_player_numbers[number_of_players], green=coin_amount_by_player_numbers[number_of_players], blue=coin_amount_by_player_numbers[number_of_players], black=coin_amount_by_player_numbers[number_of_players], white=coin_amount_by_player_numbers[number_of_players],
+                  card_level_3=4, card_level_2=4, card_level_1=4))
