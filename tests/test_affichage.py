@@ -11,11 +11,11 @@ then
 """
 def test_printBoard():
     user_interface: CliInterface = CliInterface()
-    exemple_board: Board = Board(number_of_nobles=3, gold=3, red=5, blue=5, black=5, white=5, green=5, card_level_1=4,
+    exemple_board: Board = Board(hidden_development_cards=78, exposed_development_cards=12, number_of_nobles=3, gold=3, red=5, blue=5, black=5, white=5, green=5, card_level_1=4,
                                  card_level_2=4, card_level_3=4)
 
     actual = user_interface.showBoard(exemple_board)
-    expected = "Board(number_of_nobles=3, gold=3, red=5, green=5, blue=5, black=5, white=5, card_level_3=4, card_level_2=4, card_level_1=4)"
+    expected = "Board(hidden_development_cards=78, exposed_development_cards=12, number_of_nobles=3, gold=3, red=5, green=5, blue=5, black=5, white=5, card_level_3=4, card_level_2=4, card_level_1=4)"
     assert actual == expected
 
 
@@ -29,9 +29,9 @@ then
 """
 def test_printBoard2():
     user_interface: CliInterface = CliInterface()
-    exemple_board: Board = Board(number_of_nobles=3, gold=14, red=5, blue=5, black=5, white=5, green=5, card_level_1=6,
+    exemple_board: Board = Board(hidden_development_cards=78, exposed_development_cards=12, number_of_nobles=3, gold=14, red=5, blue=5, black=5, white=5, green=5, card_level_1=6,
                                  card_level_2=6, card_level_3=6)
 
     actual = user_interface.showBoard(exemple_board)
-    expected = "Board(number_of_nobles=3, gold=14, red=5, green=5, blue=5, black=5, white=5, card_level_3=6, card_level_2=6, card_level_1=6)"
+    expected = "Board(hidden_development_cards=78, exposed_development_cards=12, number_of_nobles=3, gold=14, red=5, green=5, blue=5, black=5, white=5, card_level_3=6, card_level_2=6, card_level_1=6)"
     assert actual == expected
