@@ -1,7 +1,7 @@
 from domain.board.board import Board
 from domain.player.player import Player
 import domain.player.player_repository_memory as playerRepository
-import domain.board.board_repository_memory as gameRepository
+import domain.board.board_repository_memory as board_repository
 from turn.step_1.Error import NotEnoughCoinsError
 from turn.step_1.action_take_2_coins_of_the_same_color import TakeTwoCoinsCommand
 
@@ -9,7 +9,7 @@ from turn.step_1.action_take_2_coins_of_the_same_color import TakeTwoCoinsComman
 # @pytest.mark.skip("test raise exception")
 def test_take_2_green_coins():
     player_repository = playerRepository.PlayerRepositoryInMemory()
-    game_repository = gameRepository.BoardRepositoryInMemory()
+    game_repository = board_repository.BoardRepositoryInMemory()
 
     take_coins_command = TakeTwoCoinsCommand(board_repository=game_repository, player_repository=player_repository)
 
@@ -29,7 +29,7 @@ def test_take_2_green_coins():
 # @pytest.mark.skip
 def test_take_2_red_coins():
     player_repository = playerRepository.PlayerRepositoryInMemory()
-    game_repository = gameRepository.BoardRepositoryInMemory()
+    game_repository = board_repository.BoardRepositoryInMemory()
 
     take_coins_command = TakeTwoCoinsCommand(board_repository=game_repository, player_repository=player_repository)
 
@@ -50,7 +50,7 @@ def test_take_2_red_coins():
 # @pytest.mark.skip
 def test_take_2_white_coins():
     player_repository = playerRepository.PlayerRepositoryInMemory()
-    game_repository = gameRepository.BoardRepositoryInMemory()
+    game_repository = board_repository.BoardRepositoryInMemory()
 
     take_coins_command = TakeTwoCoinsCommand(board_repository=game_repository, player_repository=player_repository)
 
@@ -72,7 +72,7 @@ def test_take_2_white_coins():
 # @pytest.mark.skip
 def test_take_2_blue_coins():
     player_repository = playerRepository.PlayerRepositoryInMemory()
-    game_repository = gameRepository.BoardRepositoryInMemory()
+    game_repository = board_repository.BoardRepositoryInMemory()
 
     take_coins_command = TakeTwoCoinsCommand(board_repository=game_repository, player_repository=player_repository)
 
@@ -93,7 +93,7 @@ def test_take_2_blue_coins():
 # @pytest.mark.skip
 def test_take_2_black_coins():
     player_repository = playerRepository.PlayerRepositoryInMemory()
-    game_repository = gameRepository.BoardRepositoryInMemory()
+    game_repository = board_repository.BoardRepositoryInMemory()
 
     take_coins_command = TakeTwoCoinsCommand(board_repository=game_repository, player_repository=player_repository)
 
@@ -112,7 +112,7 @@ def test_take_2_black_coins():
 
 
 def test_4_or_more_tokens_when_take_two():
-    game_repository = gameRepository.BoardRepositoryInMemory()
+    game_repository = board_repository.BoardRepositoryInMemory()
     player_repository = playerRepository.PlayerRepositoryInMemory()
 
     example_player: Player = Player(gold=0, red=1, green=1, blue=2, black=1, white=0)
@@ -130,7 +130,7 @@ def test_4_or_more_tokens_when_take_two():
 
 
 def test_4_or_more_tokens_when_take_two_bis():
-    game_repository = gameRepository.BoardRepositoryInMemory()
+    game_repository = board_repository.BoardRepositoryInMemory()
     player_repository = playerRepository.PlayerRepositoryInMemory()
 
     example_player: Player = Player(gold=0, red=1, green=1, blue=2, black=1, white=0)
