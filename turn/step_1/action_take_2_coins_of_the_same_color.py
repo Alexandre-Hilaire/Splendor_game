@@ -1,5 +1,5 @@
-from Board.board import Board
-from player.Player import Player
+from domain.board.board import Board
+from domain.player.player import Player
 from turn.step_1.Error import NotEnoughCoinsError
 
 
@@ -46,6 +46,6 @@ class TakeTwoCoinsCommand:
         number_of_nobles = number_of_players + 1
         gold_coin = 5
         self.game_repository.save(
-            Board(number_of_nobles=number_of_nobles, gold=gold_coin, red=coin_amount_by_player_numbers[number_of_players], green=coin_amount_by_player_numbers[number_of_players], blue=coin_amount_by_player_numbers[number_of_players], black=coin_amount_by_player_numbers[number_of_players], white=coin_amount_by_player_numbers[number_of_players],
+            board(number_of_nobles=number_of_nobles, gold=gold_coin, red=coin_amount_by_player_numbers[number_of_players], green=coin_amount_by_player_numbers[number_of_players], blue=coin_amount_by_player_numbers[number_of_players], black=coin_amount_by_player_numbers[number_of_players], white=coin_amount_by_player_numbers[number_of_players],
                   card_level_3=4, card_level_2=4, card_level_1=4))
 """

@@ -1,5 +1,5 @@
 
-from Board.board import Board
+from domain.board import Board
 
 
 """

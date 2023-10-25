@@ -1,4 +1,4 @@
-from Board.board import Board
+from domain.board.board import Board
 from output.CLI_interface import CliInterface
 
 
