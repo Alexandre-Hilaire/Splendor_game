@@ -20,8 +20,10 @@ def test_take_2_green_coins():
                                  card_level_3=4, number_of_nobles=5)
     take_coins_command.execute(example_player, "green", example_board)
 
-    actual = player_repository.get_player()
-    expected = Player(gold=0, red=0, green=2, blue=0, black=0, white=0)
+    actual = (player_repository.get_player(), game_repository.get_game())
+    expected = Player(gold=0, red=0, green=2, blue=0, black=0, white=0), Board(blue=4, black=0, green=2, white=1, red=0,
+                                                                               gold=0, card_level_1=4, card_level_2=4,
+                                                                               card_level_3=4, number_of_nobles=5)
 
     assert actual == expected
 
@@ -34,13 +36,15 @@ def test_take_2_red_coins():
     take_coins_command = TakeTwoCoinsCommand(board_repository=game_repository, player_repository=player_repository)
 
     example_player: Player = Player(gold=0, red=0, green=0, blue=2, black=1, white=0)
-    example_board: Board = Board(blue=4, black=0, green=4, white=1, red=4, gold=0, card_level_1=4, card_level_2=4,
+    example_board: Board = Board(blue=4, black=0, green=4, white=1, red=5, gold=0, card_level_1=4, card_level_2=4,
                                  card_level_3=4, number_of_nobles=5)
 
     take_coins_command.execute(example_player, "red", example_board)
 
-    actual = player_repository.get_player()
-    expected = Player(gold=0, red=2, green=0, blue=2, black=1, white=0)
+    actual = (player_repository.get_player(), game_repository.get_game())
+    expected = Player(gold=0, red=2, green=0, blue=2, black=1, white=0), Board(blue=4, black=0, green=4, white=1, red=3,
+                                                                               gold=0, card_level_1=4, card_level_2=4,
+                                                                               card_level_3=4, number_of_nobles=5)
 
     assert actual == expected
 
@@ -58,8 +62,11 @@ def test_take_2_white_coins():
 
     take_coins_command.execute(example_player, "white", example_board)
 
-    actual = player_repository.get_player()
-    expected = Player(gold=0, red=5, green=3, blue=7, black=12, white=5)
+    actual = player_repository.get_player(), game_repository.get_game()
+    expected = Player(gold=0, red=5, green=3, blue=7, black=12, white=5), Board(blue=4, black=0, green=4, white=3,
+                                                                                red=0, gold=0, card_level_1=4,
+                                                                                card_level_2=4,
+                                                                                card_level_3=4, number_of_nobles=5)
 
     assert actual == expected
 
@@ -72,13 +79,15 @@ def test_take_2_blue_coins():
     take_coins_command = TakeTwoCoinsCommand(board_repository=game_repository, player_repository=player_repository)
 
     example_player: Player = Player(gold=2, red=5, green=3, blue=5, black=1, white=5)
-    example_board: Board = Board(blue=4, black=0, green=4, white=1, red=0, gold=0, card_level_1=4, card_level_2=4,
+    example_board: Board = Board(blue=5, black=0, green=4, white=1, red=0, gold=0, card_level_1=4, card_level_2=4,
                                  card_level_3=4, number_of_nobles=5)
 
     take_coins_command.execute(example_player, "blue", example_board)
 
-    actual = player_repository.get_player()
-    expected = Player(gold=2, red=5, green=3, blue=7, black=1, white=5)
+    actual = player_repository.get_player(), game_repository.get_game()
+    expected = Player(gold=2, red=5, green=3, blue=7, black=1, white=5), Board(blue=3, black=0, green=4, white=1, red=0,
+                                                                               gold=0, card_level_1=4, card_level_2=4,
+                                                                               card_level_3=4, number_of_nobles=5)
 
     assert actual == expected
 
@@ -96,8 +105,10 @@ def test_take_2_black_coins():
 
     take_coins_command.execute(example_player, "black", example_board)
 
-    actual = player_repository.get_player()
-    expected = Player(gold=0, red=1, green=1, blue=2, black=3, white=1)
+    actual = player_repository.get_player(), game_repository.get_game()
+    expected = Player(gold=0, red=1, green=1, blue=2, black=3, white=1), Board(blue=4, black=2, green=4, white=1, red=0,
+                                                                               gold=0, card_level_1=4, card_level_2=4,
+                                                                               card_level_3=4, number_of_nobles=5)
 
     assert actual == expected
 
