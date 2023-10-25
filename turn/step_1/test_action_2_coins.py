@@ -5,19 +5,30 @@ import domain.board.board_repository_memory as board_repository
 from turn.step_1.Error import NotEnoughCoinsError
 from turn.step_1.action_take_2_coins_of_the_same_color import TakeTwoCoinsCommand
 
-
-# @pytest.mark.skip("test raise exception")
+"""
+given
+    the board contains 5 nobles, 4 blue and green coins, 1 white coin, 0 coin for other colors, 4 development card per level
+    the player owns no coins at all
+when
+    the player takes two green coins
+then
+    the player has now 2 green coins and the player 2 green coins
+    the board has now 2 green coins instead of 4
+"""
 def test_take_2_green_coins():
     player_repository = playerRepository.PlayerRepositoryInMemory()
     game_repository = board_repository.BoardRepositoryInMemory()
 
     take_coins_command = TakeTwoCoinsCommand(board_repository=game_repository, player_repository=player_repository)
 
+    # given
     example_player: Player = Player(gold=0, red=0, green=0, blue=0, black=0, white=0)
     example_board: Board = Board(blue=4, black=0, green=4, white=1, red=0, gold=0, card_level_1=4, card_level_2=4,
                                  card_level_3=4, number_of_nobles=5)
+    # when
     take_coins_command.execute(example_player, "green", example_board)
 
+    # then
     actual = (player_repository.get_player(), game_repository.get_board())
     expected = Player(gold=0, red=0, green=2, blue=0, black=0, white=0), Board(blue=4, black=0, green=2, white=1, red=0,
                                                                                gold=0, card_level_1=4, card_level_2=4,
@@ -26,7 +37,16 @@ def test_take_2_green_coins():
     assert actual == expected
 
 
-# @pytest.mark.skip
+"""
+given
+    the board contains 5 nobles, 5 red coins, 4 blue and green coins, 1 white coin, 0 coin for other colors, 4 development card per level
+    the player owns 2 blue coins and 1 black coin
+when
+    the player takes two red coins
+then
+    the board has now 3 red coins
+    the player has 2 red coins
+"""
 def test_take_2_red_coins():
     player_repository = playerRepository.PlayerRepositoryInMemory()
     game_repository = board_repository.BoardRepositoryInMemory()
@@ -47,7 +67,6 @@ def test_take_2_red_coins():
     assert actual == expected
 
 
-# @pytest.mark.skip
 def test_take_2_white_coins():
     player_repository = playerRepository.PlayerRepositoryInMemory()
     game_repository = board_repository.BoardRepositoryInMemory()
@@ -69,7 +88,6 @@ def test_take_2_white_coins():
     assert actual == expected
 
 
-# @pytest.mark.skip
 def test_take_2_blue_coins():
     player_repository = playerRepository.PlayerRepositoryInMemory()
     game_repository = board_repository.BoardRepositoryInMemory()
@@ -90,7 +108,6 @@ def test_take_2_blue_coins():
     assert actual == expected
 
 
-# @pytest.mark.skip
 def test_take_2_black_coins():
     player_repository = playerRepository.PlayerRepositoryInMemory()
     game_repository = board_repository.BoardRepositoryInMemory()

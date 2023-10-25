@@ -6,7 +6,15 @@ from domain.game.game_repository_memory import GameRepositoryInMemory
 from domain.player.player import Player
 from start_game import startGame
 
-
+"""
+given
+    the game master want to start the game
+when
+    two players plays
+then
+    a game with two player and a board with 3 nobles, 5 gold coins, 4 coins per other color and 4 development card per 
+    level is prepared
+"""
 def test_should_start_game_for_two_players():
     game_repository = GameRepositoryInMemory()
 
@@ -24,7 +32,15 @@ def test_should_start_game_for_two_players():
     assert actual == expected
 
 
-# @pytest.mark.skip
+"""
+given
+    the game master want to start the game
+when
+    three players plays
+then
+    a game with two player and a board with 4 nobles, 5 gold coins, 5 coins per other color and 4 development card per 
+    level is prepared
+"""
 def test_should_start_game_for_three_players():
     game_repository = GameRepositoryInMemory()
 
@@ -44,6 +60,15 @@ def test_should_start_game_for_three_players():
     assert actual == expected
 
 
+"""
+given
+    the game master want to start the game
+when
+    four players plays
+then
+    a game with two player and a board with 5 nobles, 5 gold coins, 7 coins per other color and 4 development card per 
+    level is prepared
+"""
 def test_should_start_game_for_four_players():
     game_repository = GameRepositoryInMemory()
 
