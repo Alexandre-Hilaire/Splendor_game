@@ -24,8 +24,7 @@ def test_take_2_green_coins():
     take_coins_command = TakeTwoCoinsCommand(board_repository=board_repository, player_repository=player_repository)
 
     # given
-    example_player: Player = Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=0, black=0, white=0,
-                                    owned_development_card=0)
+    example_player: Player = create_player({"gold": 0, "red": 0, "green": 0, "blue": 0, "black": 0, "white": 0})
     example_board: Board = Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, blue=4, black=0, green=4,
                                  white=1, red=0, gold=0,
                                  exposed_development_cards_by_level={1: 4, 2: 4, 3: 4}, number_of_nobles=5)
@@ -34,10 +33,10 @@ def test_take_2_green_coins():
 
     # then
     actual = (player_repository.get_player(), board_repository.get_board())
-    expected = Player(reserved_development_cards=0, gold=0, red=0, green=2, blue=0, black=0, white=0,
-                      owned_development_card=0), Board(
-        hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, blue=4, black=0, green=2, white=1, red=0,
-        gold=0, exposed_development_cards_by_level={1: 4, 2: 4, 3: 4}, number_of_nobles=5)
+    expected = (create_player({"gold": 0, "red": 0, "green": 2, "blue": 0, "black": 0, "white": 0}),
+                Board(
+                    hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, blue=4, black=0, green=2, white=1, red=0,
+                    gold=0, exposed_development_cards_by_level={1: 4, 2: 4, 3: 4}, number_of_nobles=5))
 
     assert actual == expected
 
@@ -60,8 +59,7 @@ def test_take_2_red_coins():
 
     take_coins_command = TakeTwoCoinsCommand(board_repository=game_repository, player_repository=player_repository)
 
-    example_player: Player = Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=2, black=1, white=0,
-                                    owned_development_card=0)
+    example_player: Player = create_player({"gold": 0, "red": 0, "green": 0, "blue": 2, "black": 1, "white": 0})
     example_board: Board = Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, blue=4, black=0, green=4,
                                  white=1, red=5, gold=0,
                                  exposed_development_cards_by_level={1: 4, 2: 4, 3: 4}, number_of_nobles=5)
@@ -70,9 +68,9 @@ def test_take_2_red_coins():
 
     actual = player_repository.get_player(), game_repository.get_board()
     expected = (
-    Player(reserved_development_cards=0, gold=0, red=2, green=0, blue=2, black=1, white=0, owned_development_card=0),
-    Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, blue=4, black=0, green=4, white=1, red=3,
-          gold=0, exposed_development_cards_by_level={1: 4, 2: 4, 3: 4}, number_of_nobles=5))
+        create_player({"gold": 0, "red": 2, "green": 0, "blue": 2, "black": 1, "white": 0}),
+        Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, blue=4, black=0, green=4, white=1, red=3,
+              gold=0, exposed_development_cards_by_level={1: 4, 2: 4, 3: 4}, number_of_nobles=5))
 
     assert actual == expected
 
@@ -83,8 +81,7 @@ def test_take_2_white_coins():
 
     take_coins_command = TakeTwoCoinsCommand(board_repository=game_repository, player_repository=player_repository)
 
-    example_player: Player = Player(reserved_development_cards=0, gold=0, red=5, green=3, blue=7, black=12, white=3,
-                                    owned_development_card=0)
+    example_player: Player = create_player({"gold": 0, "red": 5, "green": 3, "blue": 7, "black": 12, "white": 3})
     example_board: Board = Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, blue=4, black=0, green=4,
                                  white=5, red=0, gold=0, exposed_development_cards_by_level={1: 4, 2: 4, 3: 4},
                                  number_of_nobles=5)
@@ -92,11 +89,10 @@ def test_take_2_white_coins():
     take_coins_command.execute(example_player, "white", example_board)
 
     actual = player_repository.get_player(), game_repository.get_board()
-    expected = (
-    Player(reserved_development_cards=0, gold=0, red=5, green=3, blue=7, black=12, white=5, owned_development_card=0),
-    Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, blue=4, black=0, green=4, white=3, red=0,
-          gold=0,
-          exposed_development_cards_by_level={1: 4, 2: 4, 3: 4}, number_of_nobles=5))
+    expected = (create_player({"gold": 0, "red": 5, "green": 3, "blue": 7, "black": 12, "white": 5}),
+                Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, blue=4, black=0, green=4, white=3, red=0,
+                      gold=0,
+                      exposed_development_cards_by_level={1: 4, 2: 4, 3: 4}, number_of_nobles=5))
 
     assert actual == expected
 
@@ -107,8 +103,7 @@ def test_take_2_blue_coins():
 
     take_coins_command = TakeTwoCoinsCommand(board_repository=game_repository, player_repository=player_repository)
 
-    example_player: Player = Player(reserved_development_cards=0, gold=2, red=5, green=3, blue=5, black=1, white=5,
-                                    owned_development_card=0)
+    example_player: Player = create_player({"gold": 2, "red": 5, "green": 3, "blue": 5, "black": 1, "white": 5})
     example_board: Board = Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, blue=5, black=0, green=4,
                                  white=1, red=0, gold=0, exposed_development_cards_by_level={1: 4, 2: 4, 3: 4},
                                  number_of_nobles=5)
@@ -116,10 +111,9 @@ def test_take_2_blue_coins():
     take_coins_command.execute(example_player, "blue", example_board)
 
     actual = player_repository.get_player(), game_repository.get_board()
-    expected = Player(reserved_development_cards=0, gold=2, red=5, green=3, blue=7, black=1, white=5,
-                      owned_development_card=0), Board(
-        hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, blue=3, black=0, green=4, white=1, red=0,
-        gold=0, exposed_development_cards_by_level={1: 4, 2: 4, 3: 4}, number_of_nobles=5)
+    expected = (create_player({"gold": 2, "red": 5, "green": 3, "blue": 7, "black": 1, "white": 5}),
+                Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, blue=3, black=0, green=4, white=1, red=0,
+                      gold=0, exposed_development_cards_by_level={1: 4, 2: 4, 3: 4}, number_of_nobles=5))
 
     assert actual == expected
 
@@ -130,8 +124,7 @@ def test_take_2_black_coins():
 
     take_coins_command = TakeTwoCoinsCommand(board_repository=game_repository, player_repository=player_repository)
 
-    example_player: Player = Player(reserved_development_cards=0, gold=0, red=1, green=1, blue=2, black=1, white=1,
-                                    owned_development_card=0)
+    example_player: Player = create_player({"gold": 0, "red": 1, "green": 1, "blue": 2, "black": 1, "white": 1})
     example_board: Board = Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, blue=4, black=4, green=4,
                                  white=1, red=0, gold=0, exposed_development_cards_by_level={1: 4, 2: 4, 3: 4},
                                  number_of_nobles=5)
@@ -139,10 +132,9 @@ def test_take_2_black_coins():
     take_coins_command.execute(example_player, "black", example_board)
 
     actual = player_repository.get_player(), game_repository.get_board()
-    expected = (
-    Player(reserved_development_cards=0, gold=0, red=1, green=1, blue=2, black=3, white=1, owned_development_card=0),
-    Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, blue=4, black=2, green=4, white=1, red=0,
-          gold=0, exposed_development_cards_by_level={1: 4, 2: 4, 3: 4}, number_of_nobles=5))
+    expected = (create_player({"gold": 0, "red": 1, "green": 1, "blue": 2, "black": 3, "white": 1}),
+                Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, blue=4, black=2, green=4, white=1, red=0,
+                      gold=0, exposed_development_cards_by_level={1: 4, 2: 4, 3: 4}, number_of_nobles=5))
 
     assert actual == expected
 
@@ -151,8 +143,7 @@ def test_4_or_more_tokens_when_take_two():
     game_repository = boardRepository.BoardRepositoryInMemory()
     player_repository = playerRepository.PlayerRepositoryInMemory()
 
-    example_player: Player = Player(reserved_development_cards=0, gold=0, red=1, green=1, blue=2, black=1, white=0,
-                                    owned_development_card=0)
+    example_player: Player = create_player({"gold": 0, "red": 1, "green": 1, "blue": 2, "black": 1, "white": 0})
     example_board: Board = Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, blue=4, black=0, green=3,
                                  white=1, red=0, gold=0, exposed_development_cards_by_level={1: 4, 2: 4, 3: 4},
                                  number_of_nobles=5)
@@ -171,8 +162,7 @@ def test_4_or_more_tokens_when_take_two_bis():
     game_repository = boardRepository.BoardRepositoryInMemory()
     player_repository = playerRepository.PlayerRepositoryInMemory()
 
-    example_player: Player = Player(reserved_development_cards=0, gold=0, red=1, green=1, blue=2, black=1, white=0,
-                                    owned_development_card=0)
+    example_player: Player = create_player({"gold": 0, "red": 1, "green": 1, "blue": 2, "black": 1, "white": 0})
     example_board: Board = Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, blue=4, black=0, green=3,
                                  white=1, red=0, gold=0, exposed_development_cards_by_level={1: 4, 2: 4, 3: 4},
                                  number_of_nobles=5)
@@ -185,3 +175,8 @@ def test_4_or_more_tokens_when_take_two_bis():
         has_not_enough_coin_error = True
 
     assert has_not_enough_coin_error
+
+
+def create_player(coins_content):
+    return Player(reserved_development_cards=0, coins_by_color=coins_content,
+                  owned_development_card=0)

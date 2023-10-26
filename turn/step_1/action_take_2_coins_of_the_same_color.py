@@ -13,27 +13,27 @@ class TakeTwoCoinsCommand:
             case "green":
                 if board.green < 4:
                     raise NotEnoughCoinsError()
-                player.green += 2
+                player.coins_by_color[coins_color] += 2
                 board.green -= 2
             case "red":
                 if board.red < 4:
                     raise NotEnoughCoinsError()
-                player.red += 2
+                player.coins_by_color[coins_color] += 2
                 board.red -= 2
             case "black":
                 if board.black < 4:
                     raise NotEnoughCoinsError()
-                player.black += 2
+                player.coins_by_color[coins_color] += 2
                 board.black -= 2
             case "blue":
                 if board.blue < 4:
                     raise NotEnoughCoinsError()
-                player.blue += 2
+                player.coins_by_color[coins_color] += 2
                 board.blue -= 2
             case "white":
                 if board.white < 4:
                     raise NotEnoughCoinsError()
-                player.white += 2
+                player.coins_by_color[coins_color] += 2
                 board.white -= 2
 
         self.player_repository.save(player)

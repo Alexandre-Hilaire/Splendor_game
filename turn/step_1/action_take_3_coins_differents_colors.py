@@ -9,56 +9,24 @@ class TakeThreeCoinsCommand:
         self.player_repository = player_repository
 
     def execute(self, player: Player, coins_color1: str, coins_color2: str, coins_color3: str, board: Board):
-        match coins_color1:
-            case "green":
-                player.green += 1
-                board.green -= 1
-            case "red":
-                player.red += 1
-                board.red -= 1
-            case "blue":
-                player.blue += 1
-                board.blue -= 1
-            case "black":
-                player.black += 1
-                board.black -= 1
-            case "white":
-                player.white += 1
-                board.white -= 1
 
-        match coins_color2:
-            case "green":
-                player.green += 1
-                board.green -= 1
-            case "red":
-                player.red += 1
-                board.red -= 1
-            case "blue":
-                player.blue += 1
-                board.blue -= 1
-            case "black":
-                player.black += 1
-                board.black -= 1
-            case "white":
-                player.white += 1
-                board.white -= 1
-
-        match coins_color3:
-            case "green":
-                player.green += 1
-                board.green -= 1
-            case "red":
-                player.red += 1
-                board.red -= 1
-            case "blue":
-                player.blue += 1
-                board.blue -= 1
-            case "black":
-                player.black += 1
-                board.black -= 1
-            case "white":
-                player.white += 1
-                board.white -= 1
+        self._move_coin_by_color(board, coins_color1, player)
+        self._move_coin_by_color(board, coins_color2, player)
+        self._move_coin_by_color(board, coins_color3, player)
 
         self.player_repository.save(player)
         self.board_repository.save(board)
+
+    def _move_coin_by_color(self, board, color, player):
+        player.coins_by_color[color] += 1
+        match color:
+            case "green":
+                board.green -= 1
+            case "red":
+                board.red -= 1
+            case "blue":
+                board.blue -= 1
+            case "black":
+                board.black -= 1
+            case "white":
+                board.white -= 1

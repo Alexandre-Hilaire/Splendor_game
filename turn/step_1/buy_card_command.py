@@ -12,26 +12,15 @@ class BuyCardCommand:
 
         for coin_color in card.price:
             coin_cost = card.price[coin_color]
-            match coin_color:
-                case "red":
-                    if coin_cost > player.red:
-                        raise NotEnoughCoin
-                    player.red -= coin_cost
-                case "green":
-                    if coin_cost > player.green:
-                        raise NotEnoughCoin
-                    player.green -= coin_cost
-                case "blue":
-                    if coin_cost > player.blue:
-                        raise NotEnoughCoin
-                    player.blue -= coin_cost
-                case "black":
-                    if coin_cost > player.black:
-                        raise NotEnoughCoin
-                    player.black -= coin_cost
-                case "white":
-                    if coin_cost > player.white:
-                        raise NotEnoughCoin
-                    player.white -= coin_cost
+
+            if coin_cost > (player.coins_by_color[coin_color] + player.coins_by_color["gold"]):
+                raise NotEnoughCoin
+            while player.coins_by_color[coin_color] > 0 and coin_cost > 0:
+                player.coins_by_color[coin_color] -= 1
+                coin_cost -= 1
+            while coin_cost > 0:
+                player.coins_by_color["gold"] -= 1
+                coin_cost -= 1
+
         player.owned_development_card += 1
         self.player_repository.save(player)

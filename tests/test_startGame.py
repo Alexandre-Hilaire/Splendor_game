@@ -27,12 +27,16 @@ def test_should_start_game_for_two_players():
         board=Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, number_of_nobles=3, gold=5, red=4, green=4,
                     blue=4, black=4, white=4, exposed_development_cards_by_level={1: 4, 2: 4, 3: 4}),
         players=[
-            Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=0, white=0, black=0,
-                   owned_development_card=0),
-            Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=0, white=0, black=0,
-                   owned_development_card=0)
+            create_player(),
+            create_player()
         ])
     assert actual == expected
+
+
+def create_player():
+    return Player(reserved_development_cards=0,
+                  coins_by_color={"gold": 0, "red": 0, "green": 0, "blue": 0, "black": 0, "white": 0},
+                  owned_development_card=0)
 
 
 """
@@ -59,12 +63,9 @@ def test_should_start_game_for_three_players():
                     blue=5, black=5, white=5,
                     exposed_development_cards_by_level={1: 4, 2: 4, 3: 4}),
         players=[
-            Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=0, white=0, black=0,
-                   owned_development_card=0),
-            Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=0, white=0, black=0,
-                   owned_development_card=0),
-            Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=0, white=0, black=0,
-                   owned_development_card=0)
+            create_player(),
+            create_player(),
+            create_player()
         ])
     assert actual == expected
 
@@ -92,13 +93,9 @@ def test_should_start_game_for_four_players():
                     blue=7, black=7, white=7,
                     exposed_development_cards_by_level={1: 4, 2: 4, 3: 4}),
         players=[
-            Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=0, white=0, black=0,
-                   owned_development_card=0),
-            Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=0, white=0, black=0,
-                   owned_development_card=0),
-            Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=0, white=0, black=0,
-                   owned_development_card=0),
-            Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=0, white=0, black=0,
-                   owned_development_card=0)
+            create_player(),
+            create_player(),
+            create_player(),
+            create_player()
         ])
     assert actual == expected

@@ -24,7 +24,7 @@ class ReserveDevelopmentCardCommand:
                 board.exposed_development_cards_by_level[level_card] += 1
 
         if board.gold > 0:
-            player.gold += 1
+            player.coins_by_color["gold"] += 1
             board.gold -= 1
 
         self.player_repository.save(player)
