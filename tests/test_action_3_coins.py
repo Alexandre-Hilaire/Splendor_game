@@ -11,7 +11,8 @@ def test_take_3_different_color_coins():
 
     take_coins_command = TakeThreeCoinsCommand(board_repository=game_repository, player_repository=player_repository)
 
-    example_player: Player = Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=0, black=0, white=0)
+    example_player: Player = Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=0, black=0, white=0,
+                                    owned_development_card=0)
     example_board: Board = Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, blue=4, black=4, green=4,
                                  white=4, red=4, gold=0, exposed_development_cards_by_level={1: 4, 2: 4, 3: 4},
                                  number_of_nobles=5)
@@ -19,7 +20,8 @@ def test_take_3_different_color_coins():
                                board=example_board)
 
     actual = (player_repository.get_player(), game_repository.get_board())
-    expected = (Player(reserved_development_cards=0, blue=1, black=1, green=0, white=0, red=1, gold=0),
-                Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, blue=3, black=3, green=4, white=4, red=3,
-                      gold=0, exposed_development_cards_by_level={1: 4, 2: 4, 3: 4}, number_of_nobles=5))
+    expected = (
+    Player(reserved_development_cards=0, blue=1, black=1, green=0, white=0, red=1, gold=0, owned_development_card=0),
+    Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, blue=3, black=3, green=4, white=4, red=3,
+          gold=0, exposed_development_cards_by_level={1: 4, 2: 4, 3: 4}, number_of_nobles=5))
     assert actual == expected

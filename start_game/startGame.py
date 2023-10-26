@@ -26,7 +26,8 @@ class StartGameCommand:
                                                           2: number_card_exposed_per_level,
                                                           3: number_card_exposed_per_level})
         players = [
-            Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=0, black=0, white=0) for _ in
+            Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=0, black=0, white=0,
+                   owned_development_card=0) for _ in
             range(number_of_players)
         ]
         self.game_repository.save(
