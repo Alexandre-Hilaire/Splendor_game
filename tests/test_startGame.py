@@ -1,5 +1,3 @@
-import pytest
-
 from domain.board.board import Board
 from domain.game.game import Game
 from domain.game.game_repository_memory import GameRepositoryInMemory
@@ -14,7 +12,10 @@ when
 then
     a game with two player and a board with 3 nobles, 5 gold coins, 4 coins per other color and 4 development card per 
     level is prepared
+    and 36 hidden card level 1, 26 level 2, 16 level 3
 """
+
+
 def test_should_start_game_for_two_players():
     game_repository = GameRepositoryInMemory()
 
@@ -23,8 +24,8 @@ def test_should_start_game_for_two_players():
 
     actual = game_repository.get_game()
     expected = Game(
-        board=Board(hidden_development_cards=78, exposed_development_cards=12, number_of_nobles=3, gold=5, red=4, green=4, blue=4, black=4, white=4, card_level_3=4,
-                    card_level_2=4, card_level_1=4),
+        board=Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, number_of_nobles=3, gold=5, red=4, green=4,
+                    blue=4, black=4, white=4, exposed_development_cards_by_level={1: 4, 2: 4, 3: 4}),
         players=[
             Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=0, white=0, black=0),
             Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=0, white=0, black=0)
@@ -41,6 +42,8 @@ then
     a game with two player and a board with 4 nobles, 5 gold coins, 5 coins per other color and 4 development card per 
     level is prepared
 """
+
+
 def test_should_start_game_for_three_players():
     game_repository = GameRepositoryInMemory()
 
@@ -50,8 +53,8 @@ def test_should_start_game_for_three_players():
     actual = game_repository.get_game()
 
     expected = Game(
-        board=Board(hidden_development_cards=78, exposed_development_cards=12, number_of_nobles=4, gold=5, red=5, green=5, blue=5, black=5, white=5, card_level_3=4,
-                    card_level_2=4, card_level_1=4),
+        board=Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, number_of_nobles=4, gold=5, red=5, green=5, blue=5, black=5, white=5,
+                    exposed_development_cards_by_level={1: 4, 2: 4, 3: 4}),
         players=[
             Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=0, white=0, black=0),
             Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=0, white=0, black=0),
@@ -69,6 +72,8 @@ then
     a game with two player and a board with 5 nobles, 5 gold coins, 7 coins per other color and 4 development card per 
     level is prepared
 """
+
+
 def test_should_start_game_for_four_players():
     game_repository = GameRepositoryInMemory()
 
@@ -77,8 +82,8 @@ def test_should_start_game_for_four_players():
 
     actual = game_repository.get_game()
     expected = Game(
-        board=Board(hidden_development_cards=78, exposed_development_cards=12, number_of_nobles=5, gold=5, red=7, green=7, blue=7, black=7, white=7, card_level_3=4,
-                    card_level_2=4, card_level_1=4),
+        board=Board(hidden_development_cards_by_level={1: 36, 2: 26, 3: 16}, number_of_nobles=5, gold=5, red=7, green=7, blue=7, black=7, white=7,
+                    exposed_development_cards_by_level={1: 4, 2: 4, 3: 4}),
         players=[
             Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=0, white=0, black=0),
             Player(reserved_development_cards=0, gold=0, red=0, green=0, blue=0, white=0, black=0),
