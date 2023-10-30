@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>splendide</title>
+</head>
+<body>
+<!-- main -->
+<div style="display: flex; flex-direction: row">
+    <!-- players -->
+    <section style="max-width: 33vw;">
+        {% for player in game.players %}
+        <div style="border: solid black; margin-bottom: 3px; padding-left: 3px">
+            <p><strong> joueur {{ forloop.counter }} </strong></p>
+            <p>jetons vert: {{ player.coins_by_color.green }}</p>
+            <p>jetons bleu: {{ player.coins_by_color.blue }}</p>
+            <p>jetons rouges: {{ player.coins_by_color.red }}</p>
+            <p>jetons blanc: {{ player.coins_by_color.white }}</p>
+            <p>jetons noir: {{ player.coins_by_color.black }}</p>
+            <p>jetons or: {{ player.coins_by_color.gold }}</p>
+            <p>nombre de cartes réservées : {{ player.reserved_development_cards }}</p>
+            <p>nombre de cartes achetées : {{ player.owned_development_card }}</p>
+        </div>
+        {% endfor %}
+    </section>
+    <!-- game -->
+    <section style="max-width: 67vw;padding-left: 5px">
+        <p>noble disponnible : {{ game.board.number_of_nobles }}</p>
+        {% for level,number_of_card in game.board.hidden_development_cards_by_level.items %}
+            <p> tas de {{ number_of_card }} cartes de développement de niveau
+                {{ level }} face caché.
+            </p>
+        {% endfor %}
+        {% for level,number_of_card in game.board.exposed_development_cards_by_level.items %}
+            <p> {{ number_of_card }} cartes développement de niveau {{ level }} visible.
+            </p>
+        {% endfor %}
+
+    </section>
+</div>
+</body>
+</html>
