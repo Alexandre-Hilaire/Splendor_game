@@ -1,5 +1,5 @@
 # from output.outputRepository import OutputRepository
-from game_elements.domain.board import Board
+from game_elements import Board
 
 
 class CliInterface:

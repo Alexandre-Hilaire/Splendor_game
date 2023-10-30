@@ -1,6 +1,6 @@
 from game_elements.domain.board.board import Board
-from game_elements.domain.player.player import Player
-from game_elements.turn.step_1.Error import NotEnoughCoinsError
+from game_elements.domain import Player
+from game_elements.turn import NotEnoughCoinsError
 
 
 class TakeTwoCoinsCommand:
