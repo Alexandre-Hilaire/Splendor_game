@@ -10,4 +10,5 @@ def index(request):
 
 
 def showGame(request):
-    return HttpResponse("game created")
+    number_player = request.POST['number_player']
+    return HttpResponse("game created with " + number_player + " player")
