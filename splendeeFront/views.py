@@ -11,13 +11,16 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 
+game_repo = GameRepositoryInMemory()
+
+
 def showGame(request):
-    game_repository = GameRepositoryInMemory()
-    start_game = StartGameCommand(game_repository)
+    if request.GET["action"] == "startGame":
+        start_game = StartGameCommand(game_repo)
 
-    start_game.execute(int(request.POST['number_player']))
+        start_game.execute(int(request.POST['number_player']))
 
-    context = {"game": game_repository.get_game(),
+    context = {"game": game_repo.get_game(),
                "coin_color": {
                    "green": "vert",
                    "red": "rouge",
