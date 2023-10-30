@@ -15,5 +15,6 @@ def getGame(request):
     start_game = StartGameCommand(game_repository)
     start_game.execute(2)
     game = game_repository.get_game()
-
-    return HttpResponse(game)
+    template = loader.get_template("get_game.html")
+    context = {"number_of_players": 2}
+    return HttpResponse(template.render(context, request))
