@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>splendide!</title>
+</head>
+<body>
+    <h1> Splendor Game tutor </h1>
+    <form action="{% url 'splendide:getGame' %}" method="post">
+        {% csrf_token %}
+        <label> nombre de joueur: <input type="number" min="2" max="4" name="number_player"></label>
+        <br>
+        <button type="submit"> submit </button>
+    </form>
+</body>
+</html>
