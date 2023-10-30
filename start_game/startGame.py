@@ -28,8 +28,7 @@ class StartGameCommand:
         players = [
             Player(reserved_development_cards=0,
                    coins_by_color={"gold": 0, "red": 0, "green": 0, "blue": 0, "black": 0, "white": 0},
-                   owned_development_card=0) for _ in
-            range(number_of_players)
+                   owned_development_card=0) for _ in range(number_of_players)
         ]
         self.game_repository.save(
             Game(board, players))
