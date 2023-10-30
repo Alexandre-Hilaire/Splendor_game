@@ -1,7 +1,7 @@
-from game_elements.domain.cards.Card import Card
-from game_elements.domain.player.player import Player
-from game_elements.domain.player.player_repository_memory import PlayerRepositoryInMemory
-from game_elements.turn.step_1.Error import NotEnoughCoin
+from splendeeFront.game_elements.domain.cards.Card import Card
+from splendeeFront.game_elements.domain.player.player import Player
+from splendeeFront.game_elements.domain.player.player_repository_memory import PlayerRepositoryInMemory
+from splendeeFront.game_elements.turn.step_1.Error import NotEnoughCoin
 
 
 class BuyCardCommand:

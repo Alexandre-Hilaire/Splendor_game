@@ -1,6 +1,6 @@
 import copy
 
-from game_elements.domain.board.board import Board
+from splendeeFront.game_elements.domain.board.board import Board
 
 
 class BoardRepositoryInMemory:

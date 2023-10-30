@@ -1,5 +1,5 @@
-from game_elements.domain.board.board import Board
-from game_elements.domain.player.player import Player
+from splendeeFront.game_elements.domain.board.board import Board
+from splendeeFront.game_elements.domain.player.player import Player
 
 
 class TakeThreeCoinsCommand:

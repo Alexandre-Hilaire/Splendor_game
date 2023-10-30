@@ -1,9 +1,9 @@
-from game_elements.domain.board.board import Board
-from game_elements.domain.player.player import Player
-import game_elements.domain.player.player_repository_memory as playerRepository
-import game_elements.domain.board.board_repository_memory as boardRepository
-from game_elements.turn.step_1.Error import NotEnoughCoinsError
-from game_elements.turn.step_1.action_take_2_coins_of_the_same_color import TakeTwoCoinsCommand
+from splendeeFront.game_elements.domain.board.board import Board
+from splendeeFront.game_elements.domain.player.player import Player
+import splendeeFront.game_elements.domain.player.player_repository_memory as playerRepository
+import splendeeFront.game_elements.domain.board.board_repository_memory as boardRepository
+from splendeeFront.game_elements.turn.step_1.Error import NotEnoughCoinsError
+from splendeeFront.game_elements.turn.step_1.action_take_2_coins_of_the_same_color import TakeTwoCoinsCommand
 
 """
 given

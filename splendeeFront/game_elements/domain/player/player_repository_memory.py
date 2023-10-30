@@ -1,6 +1,6 @@
 import copy
 
-from game_elements.domain.player.player import Player
+from splendeeFront.game_elements.domain.player.player import Player
 
 
 class PlayerRepositoryInMemory:

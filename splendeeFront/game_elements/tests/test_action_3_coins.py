@@ -1,8 +1,8 @@
-from game_elements.domain.board.board import Board
-from game_elements.domain.player.player import Player
-from game_elements.turn.step_1.action_take_3_coins_differents_colors import TakeThreeCoinsCommand
-import game_elements.domain.player.player_repository_memory as playerRepository
-import game_elements.domain.board.board_repository_memory as board_repository
+from splendeeFront.game_elements.domain.board.board import Board
+from splendeeFront.game_elements.domain.player.player import Player
+from splendeeFront.game_elements.turn.step_1.action_take_3_coins_differents_colors import TakeThreeCoinsCommand
+import splendeeFront.game_elements.domain.player.player_repository_memory as playerRepository
+import splendeeFront.game_elements.domain.board.board_repository_memory as board_repository
 
 
 def test_take_3_different_color_coins():

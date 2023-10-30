@@ -1,9 +1,9 @@
-from game_elements.domain.board.board import Board
-from game_elements.domain.board.board_repository_memory import BoardRepositoryInMemory
-from game_elements.domain.player.player import Player
-from game_elements.domain.player.player_repository_memory import PlayerRepositoryInMemory
-from game_elements.turn.step_1.Error import AlreadyThreeReservedCard
-from game_elements.turn.step_1.action_reserve_development_card import ReserveDevelopmentCardCommand
+from splendeeFront.game_elements.domain.board.board import Board
+from splendeeFront.game_elements.domain.board.board_repository_memory import BoardRepositoryInMemory
+from splendeeFront.game_elements.domain.player.player import Player
+from splendeeFront.game_elements.domain.player.player_repository_memory import PlayerRepositoryInMemory
+from splendeeFront.game_elements.turn.step_1.Error import AlreadyThreeReservedCard
+from splendeeFront.game_elements.turn.step_1.action_reserve_development_card import ReserveDevelopmentCardCommand
 
 
 def test_should_player_reserve_exposed_development_card():
