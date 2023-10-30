@@ -16,5 +16,8 @@ def getGame(request):
     start_game.execute(2)
     game = game_repository.get_game()
     template = loader.get_template("get_game.html")
-    context = {"number_of_players": 2}
+    context = {"number_of_players": 2, "number_card_exposed_per_level": game.board.exposed_development_cards_by_level,
+               "number_of_nobles": game.board.number_of_nobles, "gold_coin": game.board.gold,
+               "red_coins": game.board.red, "green_coins": game.board.green, "blue_coins": game.board.blue,
+               "white_coins": game.board.white, "black_coins": game.board.black}
     return HttpResponse(template.render(context, request))
