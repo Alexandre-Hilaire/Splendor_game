@@ -13,12 +13,9 @@
         {% for player in game.players %}
         <div style="border: solid black; margin-bottom: 3px; padding-left: 3px">
             <p><strong> joueur {{ forloop.counter }} </strong></p>
-            <p>jetons vert: {{ player.coins_by_color.green }}</p>
-            <p>jetons bleu: {{ player.coins_by_color.blue }}</p>
-            <p>jetons rouges: {{ player.coins_by_color.red }}</p>
-            <p>jetons blanc: {{ player.coins_by_color.white }}</p>
-            <p>jetons noir: {{ player.coins_by_color.black }}</p>
-            <p>jetons or: {{ player.coins_by_color.gold }}</p>
+            {% for englishColorName, frenchColorName in coin_color.items %}
+            <p> jetons {{frenchColorName}}: {{ player.coins_by_color|dict_key:englishColorName}}</p>
+            {% endfor %}
             <p>nombre de cartes réservées : {{ player.reserved_development_cards }}</p>
             <p>nombre de cartes achetées : {{ player.owned_development_card }}</p>
         </div>
