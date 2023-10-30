@@ -1,10 +1,10 @@
 import pytest
 
-from domain.cards.Card import Card
-from domain.player.player import Player
-from domain.player.player_repository_memory import PlayerRepositoryInMemory
-from turn.step_1.Error import NotEnoughCoin
-from turn.step_1.buy_card_command import BuyCardCommand
+from game_elements.domain.cards.Card import Card
+from game_elements.domain.player.player import Player
+from game_elements.domain.player.player_repository_memory import PlayerRepositoryInMemory
+from game_elements.turn.step_1.Error import NotEnoughCoin
+from game_elements.turn.step_1.buy_card_command import BuyCardCommand
 
 
 def test_buy_card():

@@ -1,6 +1,6 @@
 import copy
 
-from domain.board.board import Board
+from game_elements.domain.board.board import Board
 
 
 class BoardRepositoryInMemory:
