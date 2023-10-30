@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <title>Game</title>
 </head>
-<body style="display:flex">
+<body style="display:flex; flex-direction: column">
+    <h3>Nombre de joueurs: {{number_of_players}}</h3>
     <section style="margin-right: 10px">
-        <h3>Nombre de joueurs: {{number_of_players}}</h3>
     </section>
+    <h3> Plateau de jeu:</h3>
     <section style="margin-right: 10px">
         <p>Nombre de cartes de développement de niveau 3 sur le plateau : {{number_card_exposed_per_level.3}}</p>
         <p>Nombre de cartes de développement de niveau 2 sur le plateau : {{number_card_exposed_per_level.2}}</p>
@@ -16,12 +17,13 @@
         <p>Nombre de jetons dorés sur le plateau : {{gold_coin}}</p>
     </section>
     <section style="margin-right: 10px">
+<!--    <section >-->
         <p>Jetons :</p>
         <p style="color: crimson">Rouges: {{red_coins}}</p>
         <p style="color: green">Verts: {{green_coins}}</p>
         <p style="color: blue">Bleus: {{blue_coins}}</p>
         <p style="color: black">Noirs: {{black_coins}}</p>
-        <p style="color: lightgrey">Blancs: {{white_coins}}</p>
+        <p style="color: #AAA">Blancs: {{white_coins}}</p>
     </section>
 </body>
 </html>
