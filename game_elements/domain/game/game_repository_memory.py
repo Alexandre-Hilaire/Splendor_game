@@ -1,6 +1,6 @@
 import copy
 
-from domain.game.game import Game
+from game_elements.domain.game.game import Game
 
 
 class GameRepositoryInMemory:

@@ -1,8 +1,8 @@
-from domain.board.board import Board
-from domain.game.game import Game
-from domain.game.game_repository_memory import GameRepositoryInMemory
-from domain.player.player import Player
-from start_game import startGame
+from game_elements.domain.board.board import Board
+from game_elements.domain.game.game import Game
+from game_elements.domain.game.game_repository_memory import GameRepositoryInMemory
+from game_elements.domain.player.player import Player
+from game_elements.start_game import startGame
 
 """
 given

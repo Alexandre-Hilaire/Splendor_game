@@ -1,8 +1,8 @@
-from domain.board.board import Board
-from domain.player.player import Player
-from turn.step_1.action_take_3_coins_differents_colors import TakeThreeCoinsCommand
-import domain.player.player_repository_memory as playerRepository
-import domain.board.board_repository_memory as board_repository
+from game_elements.domain.board.board import Board
+from game_elements.domain.player.player import Player
+from game_elements.turn.step_1.action_take_3_coins_differents_colors import TakeThreeCoinsCommand
+import game_elements.domain.player.player_repository_memory as playerRepository
+from game_elements import domain as board_repository
 
 
 def test_take_3_different_color_coins():

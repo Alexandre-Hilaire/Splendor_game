@@ -1,6 +1,6 @@
 import pytest
 
-from domain.board.board import Board
+from game_elements.domain.board.board import Board
 from output.CLI_interface import CliInterface
 
 """

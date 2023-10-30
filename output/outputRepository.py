@@ -1,5 +1,5 @@
 
-from domain.board import Board
+from game_elements.domain.board import Board
 
 
 """
