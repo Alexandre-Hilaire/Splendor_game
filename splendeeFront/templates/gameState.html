@@ -6,6 +6,7 @@
 </head>
 <body>
 <!-- main -->
+{% load dict_key %}
 <div style="display: flex; flex-direction: row">
     <!-- players -->
     <section style="max-width: 33vw;">
@@ -34,6 +35,9 @@
         {% for level,number_of_card in game.board.exposed_development_cards_by_level.items %}
             <p> {{ number_of_card }} cartes développement de niveau {{ level }} visible.
             </p>
+        {% endfor %}
+        {% for englishColorName, frenchColorName in coin_color.items %}
+            <p> jetons {{frenchColorName}} disponible: {{ game.board|dict_key:englishColorName}}</p>
         {% endfor %}
 
     </section>

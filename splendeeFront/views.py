@@ -22,8 +22,9 @@ def showGame(request):
                    "green": "vert",
                    "red": "rouge",
                    "blue": "bleu",
-                   "black":"noir",
-                   "white": "blanc"
+                   "black": "noir",
+                   "white": "blanc",
+                   "gold": "or"
                }
                }
     template = loader.get_template("gameState.html")
