@@ -7,13 +7,16 @@
 <body style="display:flex; flex-direction: column">
     <h3>Nombre de joueurs: {{number_of_players}}</h3>
     <section class="players" style="margin-right: 10px">
-        <h3>Player 1 :</h3>
+        {% for player in players %}
+        <h3>Player {{ forloop.counter }} :</h3>
         <p>Jetons :</p>
         <p style="color: crimson">Rouges: {{player.red_coins}}</p>
         <p style="color: green">Verts: {{player.green_coins}}</p>
         <p style="color: blue">Bleus: {{player.blue_coins}}</p>
         <p style="color: black">Noirs: {{player.black_coins}}</p>
         <p style="color: #AAA">Blancs: {{player.white_coins}}</p>
+
+        {% endfor %}
     </section>
     <h3> Plateau de jeu:</h3>
     <section style="margin-right: 10px">
