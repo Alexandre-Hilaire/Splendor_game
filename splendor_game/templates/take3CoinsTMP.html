@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>take 3 coins</title>
+</head>
+<body>
+    <form action="{% url 'take3coins' %}" method="post">
+    {% csrf_token %}
+        <ul>
+            {{ form3Coins.as_ul }}
+        </ul>
+    <br>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

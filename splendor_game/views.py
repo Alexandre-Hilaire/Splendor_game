@@ -1,8 +1,10 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 from django.template import loader
 
 from domain.game.game_repository_memory import GameRepositoryInMemory
 from domain.player.player_repository_memory import PlayerRepositoryInMemory
+from splendor_game.forms import ThreeCoinsForm
 from start_game.startGame import StartGameCommand
 
 
@@ -32,11 +34,10 @@ def getGame(request):
     return HttpResponse(template.render(context, request))
 
 
-def seeHand(request, player_id):
-    players = player_repository.get_player()
-    player = players[player_id]
+def take_3_coins(request):
+    form = ThreeCoinsForm()
 
-    return HttpResponse(player)
+    return render(request, "take3CoinsTMP.html", {"form3Coins": form})
 
 
 class PlayerPresentation:
