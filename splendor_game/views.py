@@ -1,11 +1,13 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import loader
 
+from domain.board.board_repository_memory import BoardRepositoryInMemory
 from domain.game.game_repository_memory import GameRepositoryInMemory
 from domain.player.player_repository_memory import PlayerRepositoryInMemory
 from splendor_game.forms import ThreeCoinsForm
 from start_game.startGame import StartGameCommand
+from turn.step_1.action_take_3_coins_differents_colors import TakeThreeCoinsCommand
 
 
 def index(request):
@@ -52,7 +54,33 @@ class PlayerPresentation:
 
 
 def take_coins(request):
-    return HttpResponseRedirect(getGamePath)
+    board_repo = BoardRepositoryInMemory()
+    player_repo = PlayerRepositoryInMemory()
+
+    game = game_repository.get_game()
+    board_repo.save(game.board)
+    player_repo.save(game.players[0])
+    takes_3_coins = TakeThreeCoinsCommand(board_repository=board_repo, player_repository=player_repo)
+
+    if request.method == "POST":
+        form = ThreeCoinsForm(request.POST)
+        if form.is_valid():
+            colorTrue = []
+            for color in form.cleaned_data:
+                if form.cleaned_data[color]:
+                    colorTrue.append(color)
+            if len(colorTrue) == 3:
+                board = board_repo.get_board()
+                takes_3_coins.execute(player_repo.get_player(), colorTrue[0], colorTrue[1], colorTrue[2], board)
+
+                game.board = board_repo.get_board()
+                game.players[0] = player_repo.get_player()
+
+                game_repository.save(game)
+                player_repository.save(game.players)
+                return redirect("getGame")
+
+    return HttpResponse("Mauvais formulaire (TODO)")
 
 
 def startGame(request):
@@ -60,4 +88,4 @@ def startGame(request):
 
     number_of_player = int(request.POST["nombres_de_joueurs"])
     start_game.execute(number_of_player)
-    return HttpResponseRedirect(getGamePath)
+    return redirect("getGame")
