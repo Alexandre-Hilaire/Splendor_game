@@ -80,7 +80,7 @@ def take_coins(request):
                 player_repository.save(game.players)
                 return redirect("getGame")
 
-    return HttpResponse("Mauvais formulaire (TODO)")
+    return redirect("take_3_coins")
 
 
 def startGame(request):
