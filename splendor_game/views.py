@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.template import loader
 
@@ -19,9 +19,12 @@ player_repository = PlayerRepositoryInMemory()
 
 def getGame(request):
     # game_repository = GameRepositoryInMemory()
-    start_game = StartGameCommand(game_repository)
+    # start_game = StartGameCommand(game_repository)
+
     number_of_player = 3
-    start_game.execute(number_of_player)
+    #
+    # start_game.execute(number_of_player)
+    #
     game = game_repository.get_game()
     template = loader.get_template("get_game.html")
     player_repository.save(game.players)
@@ -50,3 +53,6 @@ class PlayerPresentation:
         self.black_coins = players[player_id].coins_by_color["black"]
         self.white_coins = players[player_id].coins_by_color["white"]
         self.gold_coins = players[player_id].coins_by_color["gold"]
+
+def take_coins(request):
+    return HttpResponseRedirect("/splendor/getGame")
