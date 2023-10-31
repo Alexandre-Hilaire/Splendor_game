@@ -15,17 +15,13 @@ def index(request):
 
 game_repository = GameRepositoryInMemory()
 player_repository = PlayerRepositoryInMemory()
+getGamePath = "/splendor/getGame"
 
 
 def getGame(request):
-    # game_repository = GameRepositoryInMemory()
-    # start_game = StartGameCommand(game_repository)
-
-    number_of_player = 3
-    #
-    # start_game.execute(number_of_player)
-    #
     game = game_repository.get_game()
+    number_of_player = len(game.players)
+
     template = loader.get_template("get_game.html")
     player_repository.save(game.players)
     context = {"number_of_players": number_of_player,
@@ -54,5 +50,14 @@ class PlayerPresentation:
         self.white_coins = players[player_id].coins_by_color["white"]
         self.gold_coins = players[player_id].coins_by_color["gold"]
 
+
 def take_coins(request):
-    return HttpResponseRedirect("/splendor/getGame")
+    return HttpResponseRedirect(getGamePath)
+
+
+def startGame(request):
+    start_game = StartGameCommand(game_repository)
+
+    number_of_player = int(request.POST["nombres_de_joueurs"])
+    start_game.execute(number_of_player)
+    return HttpResponseRedirect(getGamePath)

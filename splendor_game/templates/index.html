@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Bienvenu sur splendor game</h1>
-    <form action="/splendor/getGame/" method="post">
+    <form action="/splendor/startGame/" method="post">
         {% csrf_token %}
         <label for="number_of_players">Nombre de joueurs</label>
         <select name="nombres_de_joueurs" id="number_of_players">
