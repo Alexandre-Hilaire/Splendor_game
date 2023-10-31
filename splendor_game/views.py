@@ -26,7 +26,7 @@ def getGame(request):
     context = {"number_of_players": number_of_player, "number_card_exposed_per_level": game.board.exposed_development_cards_by_level,
                "number_of_nobles": game.board.number_of_nobles, "gold_coin": game.board.gold,
                "red_coins": game.board.red, "green_coins": game.board.green, "blue_coins": game.board.blue,
-               "white_coins": game.board.white, "black_coins": game.board.black}
+               "white_coins": game.board.white, "black_coins": game.board.black, "player": PlayerPresentation()}
     return HttpResponse(template.render(context, request))
 
 
@@ -35,3 +35,10 @@ def seeHand(request, player_id):
     player = players[player_id]
 
     return HttpResponse(player)
+
+class PlayerPresentation:
+    def __init__(self):
+        self.red_coins = 4
+
+
+
