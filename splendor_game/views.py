@@ -35,10 +35,12 @@ def getGame(request):
     return HttpResponse(template.render(context, request))
 
 
-def take_3_coins(request):
+def take_3_coins(request, player_id):
     form = ThreeCoinsForm()
 
-    return render(request, "take3CoinsTMP.html", {"form3Coins": form})
+    return render(request, "take3CoinsTMP.html",
+                  {"form3Coins": form,
+                   "player_id": player_id})
 
 
 class PlayerPresentation:
@@ -53,13 +55,14 @@ class PlayerPresentation:
         self.gold_coins = players[player_id].coins_by_color["gold"]
 
 
-def take_coins(request):
+def take_coins(request, player_id):  # player id on list: start at 1 replacing 0
+    player_id -= 1
     board_repo = BoardRepositoryInMemory()
     player_repo = PlayerRepositoryInMemory()
 
     game = game_repository.get_game()
     board_repo.save(game.board)
-    player_repo.save(game.players[0])
+    player_repo.save(game.players[player_id ])
     takes_3_coins = TakeThreeCoinsCommand(board_repository=board_repo, player_repository=player_repo)
 
     if request.method == "POST":
@@ -74,13 +77,13 @@ def take_coins(request):
                 takes_3_coins.execute(player_repo.get_player(), colorTrue[0], colorTrue[1], colorTrue[2], board)
 
                 game.board = board_repo.get_board()
-                game.players[0] = player_repo.get_player()
+                game.players[player_id] = player_repo.get_player()
 
                 game_repository.save(game)
                 player_repository.save(game.players)
                 return redirect("getGame")
 
-    return redirect("take_3_coins")
+    return redirect("take_3_coins", player_id=1)
 
 
 def startGame(request):

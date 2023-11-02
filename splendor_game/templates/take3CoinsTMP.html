@@ -5,7 +5,7 @@
     <title>take 3 coins</title>
 </head>
 <body>
-    <form action="{% url 'action_take_3_coins' %}" method="post">
+    <form action="{% url 'action_take_3_coins' player_id %}" method="post">
     {% csrf_token %}
         <ul>
             {{ form3Coins.as_ul }}

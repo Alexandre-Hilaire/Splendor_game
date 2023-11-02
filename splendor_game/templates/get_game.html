@@ -15,6 +15,7 @@
         <p style="color: blue">Bleus: {{player.blue_coins}}</p>
         <p style="color: black">Noirs: {{player.black_coins}}</p>
         <p style="color: #AAA">Blancs: {{player.white_coins}}</p>
+        <a href="{% url 'take_3_coins' forloop.counter %}"><button>prendre 3 jetons</button></a>
 
         {% endfor %}
     </section>
@@ -35,6 +36,5 @@
         <p style="color: black">Noirs: {{black_coins}}</p>
         <p style="color: #AAA">Blancs: {{white_coins}}</p>
     </section>
-    <a href="{% url 'take_3_coins' %}"><button>prendre 3 jetons</button></a>
 </body>
 </html>
